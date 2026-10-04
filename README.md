@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚚 Disaster Relief Allocator
 ### Dynamic Programming Based Emergency Resource Optimization
 **Subject:** Design and Analysis of Algorithms (DAA) — Formative Assessment 2 (FA2) Project  
@@ -197,3 +198,6 @@ The application will be available locally at `http://localhost:5173`.
 
 ## 🎓 13. Academic Conclusion
 The **Disaster Relief Allocator** demonstrates how Dynamic Programming transforms an intractable combinatorial optimization problem ($O(2^n)$ recursion) into an efficient pseudo-polynomial solution ($O(n \times W)$). By visualizing state transitions, recurrence formulas, and backtracking logic in a Disaster Management Command Center context, this model serves as a comprehensive tool for DAA academic evaluation.
+=======
+# Disaster_Relief_Allocator
+>>>>>>> ea48354c88b23d25f545607e7287af3b0cac362d
