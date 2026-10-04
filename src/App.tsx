@@ -26,10 +26,10 @@ import { solve01Knapsack } from './algorithms/knapsack';
 import { applyPriorityMode } from './utils/calculations';
 
 export function App() {
-  // Theme State (Default: 'light', persistent in localStorage)
+  // Theme State (Default: 'dark', persistent in localStorage)
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     const saved = localStorage.getItem('disaster_allocator_theme');
-    return saved === 'dark' ? 'dark' : 'light';
+    return saved === 'light' ? 'light' : 'dark';
   });
 
   useEffect(() => {
