@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import type { Resource } from '../types';
 import { validateResource } from '../utils/validation';
-import { X, AlertCircle } from 'lucide-react';
+import {
+  X,
+  AlertCircle,
+  Droplets,
+  HeartPulse,
+  Utensils,
+  Bed,
+  Flashlight,
+  Wrench,
+  Shield,
+  Activity,
+  Tent,
+  Radio,
+  Zap,
+  Fuel,
+} from 'lucide-react';
 
 interface ResourceFormProps {
   isOpen: boolean;
@@ -10,7 +25,20 @@ interface ResourceFormProps {
   editingResource?: Resource | null;
 }
 
-const COMMON_ICONS = ['💧', '💊', '🍱', '🛏', '🔦', '🛠', '📻', '🛡', '🎪', '⛽', '⚡', '😷'];
+const AVAILABLE_ICONS = [
+  { id: 'water', label: 'Water', icon: Droplets, color: 'text-sky-500' },
+  { id: 'medicine', label: 'Medical', icon: HeartPulse, color: 'text-rose-500' },
+  { id: 'food', label: 'Food', icon: Utensils, color: 'text-amber-500' },
+  { id: 'shelter', label: 'Blanket', icon: Bed, color: 'text-indigo-500' },
+  { id: 'light', label: 'Torch', icon: Flashlight, color: 'text-yellow-500' },
+  { id: 'tools', label: 'Tools', icon: Wrench, color: 'text-slate-500' },
+  { id: 'shield', label: 'Gear', icon: Shield, color: 'text-emerald-500' },
+  { id: 'mask', label: 'Mask', icon: Activity, color: 'text-teal-500' },
+  { id: 'tent', label: 'Tent', icon: Tent, color: 'text-orange-500' },
+  { id: 'radio', label: 'Radio', icon: Radio, color: 'text-purple-500' },
+  { id: 'power', label: 'Power', icon: Zap, color: 'text-amber-400' },
+  { id: 'fuel', label: 'Fuel', icon: Fuel, color: 'text-red-500' },
+];
 
 export const ResourceForm: React.FC<ResourceFormProps> = ({
   isOpen,
@@ -21,7 +49,7 @@ export const ResourceForm: React.FC<ResourceFormProps> = ({
   const [name, setName] = useState('');
   const [weight, setWeight] = useState(5);
   const [utility, setUtility] = useState(50);
-  const [icon, setIcon] = useState('📦');
+  const [icon, setIcon] = useState('package');
   const [errors, setErrors] = useState<{ name?: string; weight?: string; utility?: string }>({});
 
   useEffect(() => {
@@ -29,12 +57,12 @@ export const ResourceForm: React.FC<ResourceFormProps> = ({
       setName(editingResource.name);
       setWeight(editingResource.weight);
       setUtility(editingResource.utility);
-      setIcon(editingResource.icon);
+      setIcon(editingResource.icon || 'package');
     } else {
       setName('');
       setWeight(5);
       setUtility(50);
-      setIcon('📦');
+      setIcon('package');
     }
     setErrors({});
   }, [editingResource, isOpen]);
@@ -93,22 +121,28 @@ export const ResourceForm: React.FC<ResourceFormProps> = ({
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Select Icon</label>
-            <div className="flex items-center gap-2 flex-wrap bg-slate-50 dark:bg-slate-950 p-2 rounded-lg border border-slate-200 dark:border-slate-800">
-              {COMMON_ICONS.map((ic) => (
-                <button
-                  type="button"
-                  key={ic}
-                  onClick={() => setIcon(ic)}
-                  className={`w-8 h-8 rounded text-base flex items-center justify-center transition-all cursor-pointer ${
-                    icon === ic
-                      ? 'bg-blue-100 dark:bg-blue-950/60 border border-blue-500 text-blue-900 dark:text-blue-200 font-bold scale-105'
-                      : 'hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'
-                  }`}
-                >
-                  {ic}
-                </button>
-              ))}
+            <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Select Category</label>
+            <div className="grid grid-cols-4 sm:grid-cols-6 gap-1.5 bg-slate-50 dark:bg-slate-950 p-2 rounded-lg border border-slate-200 dark:border-slate-800">
+              {AVAILABLE_ICONS.map((item) => {
+                const IconComp = item.icon;
+                const isSelected = icon === item.id;
+                return (
+                  <button
+                    type="button"
+                    key={item.id}
+                    onClick={() => setIcon(item.id)}
+                    className={`py-1.5 px-1 rounded flex flex-col items-center justify-center gap-1 transition-all cursor-pointer border ${
+                      isSelected
+                        ? 'bg-blue-50 dark:bg-blue-950/60 border-blue-500 text-blue-900 dark:text-blue-200 font-semibold shadow-2xs'
+                        : 'border-transparent hover:bg-slate-200/70 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'
+                    }`}
+                    title={item.label}
+                  >
+                    <IconComp className={`w-3.5 h-3.5 ${item.color}`} />
+                    <span className="text-[10px] leading-none">{item.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 

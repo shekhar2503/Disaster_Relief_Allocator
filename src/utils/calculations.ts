@@ -66,7 +66,7 @@ export function solveGreedyKnapsack(items: Resource[], capacity: number, dpMaxUt
  * Generates a random set of emergency resources with realistic weights & utilities.
  */
 export function generateRandomDataset(count: number = 5): { items: Resource[]; capacity: number } {
-  const icons = ['💧', '💊', '🍱', '🛏', '🔦', '🛠', '📻', '🛡', '🎪', '⛽'];
+  const icons = ['water', 'medicine', 'food', 'shelter', 'light', 'tools', 'radio', 'shield', 'tent', 'fuel'];
   const names = [
     'Pure Water Jugs',
     'Emergency First Aid',

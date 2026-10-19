@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Resource } from '../types';
 import { Truck, Package, ShieldCheck, Zap, Scale } from 'lucide-react';
+import { ResourceIcon } from './ResourceIcon';
 
 interface TruckVisualizationProps {
   selectedItems: Resource[];
@@ -51,7 +52,7 @@ export const TruckVisualization: React.FC<TruckVisualizationProps> = ({
                   key={item.id}
                   className="bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-md px-2.5 py-1.5 flex items-center gap-2 shadow-2xs"
                 >
-                  <span className="text-lg">{item.icon}</span>
+                  <ResourceIcon icon={item.icon} name={item.name} className="w-4 h-4 flex-shrink-0" />
                   <div>
                     <div className="text-xs font-semibold text-slate-800 dark:text-slate-100">{item.name}</div>
                     <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
@@ -68,8 +69,8 @@ export const TruckVisualization: React.FC<TruckVisualizationProps> = ({
           {/* Truck Front Cabin Graphic */}
           <div className="w-16 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-r-xl flex flex-col items-center justify-center p-2 text-center">
             <div className="w-9 h-6 bg-slate-300 dark:bg-slate-700 rounded-md mb-1"></div>
-            <div className="text-xl">🚚</div>
-            <span className="text-[9px] font-mono font-semibold text-slate-500 dark:text-slate-400 mt-0.5 uppercase">DISPATCH</span>
+            <Truck className="w-6 h-6 text-slate-700 dark:text-slate-300" />
+            <span className="text-[9px] font-mono font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase">DISPATCH</span>
           </div>
         </div>
       </div>

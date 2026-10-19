@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Resource, DPStep } from '../types';
 import { Table, CheckCircle } from 'lucide-react';
+import { ResourceIcon } from './ResourceIcon';
 
 interface DPTableProps {
   resources: Resource[];
@@ -113,7 +114,7 @@ export const DPTable: React.FC<DPTableProps> = ({
                 <tr key={res.id} className="hover:bg-slate-100/50 dark:hover:bg-slate-900/30">
                   <td className="py-2 px-3 text-left font-sans text-xs text-slate-800 dark:text-slate-200 font-medium sticky left-0 bg-slate-50 dark:bg-slate-950 z-10 border-r border-slate-200 dark:border-slate-800 flex items-center justify-between gap-1 min-w-[170px]">
                     <span className="flex items-center gap-1.5 truncate">
-                      <span>{res.icon}</span>
+                      <ResourceIcon icon={res.icon} name={res.name} className="w-3.5 h-3.5 flex-shrink-0" />
                       <span className="truncate">{res.name}</span>
                     </span>
                     <span className="text-[10px] text-slate-500 font-mono flex-shrink-0">

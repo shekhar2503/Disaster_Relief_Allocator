@@ -1,10 +1,10 @@
-# 🚚 Disaster Relief Allocator
+# Disaster Relief Allocator
 ### Dynamic Programming Based Emergency Resource Optimization
 **Subject:** Design and Analysis of Algorithms (DAA) — Formative Assessment 2 (FA2) Project  
 
 ---
 
-## 📌 1. Project Title & Subtitle
+## 1. Project Title & Subtitle
 * **Title:** Disaster Relief Allocator
 * **Subtitle:** Dynamic Programming Based Emergency Resource Optimization
 * **Domain:** Disaster Management Command Center & Resource Logistics
@@ -12,7 +12,7 @@
 
 ---
 
-## 🌊 2. Problem Statement
+## 2. Problem Statement
 Following a major disaster such as a flood, earthquake, wildfire, or cyclone, emergency response teams need to dispatch relief supplies using transport vehicles (relief trucks) with strict weight capacity limits ($W$).
 
 Given a set of $n$ emergency resources, where each resource $i$ has:
@@ -24,7 +24,7 @@ The goal is to determine the exact subset of resources to load into the relief t
 
 ---
 
-## 🎯 3. Real-World Motivation
+## 3. Real-World Motivation
 During emergency response:
 - Transportation payload capacity is constrained by vehicle axle limits and road conditions.
 - Critical supplies have vastly different priority levels (e.g., clean water and trauma medicine take precedence over general tools).
@@ -33,7 +33,7 @@ During emergency response:
 
 ---
 
-## 💡 4. Objective
+## 4. Objective
 1. Visually demonstrate how **Dynamic Programming (DP)** solves the **0/1 Knapsack problem**.
 2. Make DP state definitions, recurrence relations, bottom-up matrix generation, and backtracking solution reconstruction transparent and interactive.
 3. Provide step-by-step stepper controls (`RUN`, `PAUSE`, `NEXT STEP`, `RESET`, `RUN ALL`) to inspect every single state transition.
@@ -41,7 +41,7 @@ During emergency response:
 
 ---
 
-## ⚡ 5. Algorithmic Strategy: Dynamic Programming
+## 5. Algorithmic Strategy: Dynamic Programming
 The selected algorithmic technique is **Bottom-Up Dynamic Programming**.
 
 ### Why Dynamic Programming?
@@ -50,7 +50,7 @@ The selected algorithmic technique is **Bottom-Up Dynamic Programming**.
 
 ---
 
-## 📐 6. Mathematical Model & DP State
+## 6. Mathematical Model & DP State
 
 ### DP State Definition
 Let $dp[i][w]$ be the maximum utility achievable using a subset of the first $i$ items ($0 \le i \le n$) under a truck capacity limit of $w$ ($0 \le w \le W$).
@@ -68,7 +68,7 @@ $$\text{If } w_i > w: \quad dp[i][w] = dp[i-1][w]$$
 
 ---
 
-## 📝 7. Pseudocode
+## 7. Pseudocode
 
 ```text
 KNAPSACK(items, capacity):
@@ -101,7 +101,7 @@ KNAPSACK(items, capacity):
 
 ---
 
-## 🔁 8. Solution Reconstruction (Backtracking)
+## 8. Solution Reconstruction (Backtracking)
 After the 2D DP matrix $dp[n][W]$ is complete:
 1. Start at cell $(n, W)$.
 2. Compare $dp[i][w]$ with $dp[i-1][w]$:
@@ -111,7 +111,7 @@ After the 2D DP matrix $dp[n][W]$ is complete:
 
 ---
 
-## ⏱️ 9. Complexity Analysis
+## 9. Complexity Analysis
 
 | Complexity Metric | Bound | Justification |
 |---|---|---|
@@ -120,7 +120,7 @@ After the 2D DP matrix $dp[n][W]$ is complete:
 
 ---
 
-## 🏗️ 10. System Architecture
+## 10. System Architecture
 
 ```text
 src/
@@ -160,11 +160,11 @@ src/
 
 ---
 
-## ✨ 11. Application Features
+## 11. Application Features
 1. **Interactive Stepper Execution:** STEP-by-STEP state transition visualization with adjustable animation speed (50ms–1000ms).
 2. **Dynamic 2D DP Table:** Real-time cell highlighting (Current Cell, Exclude Cell, Include Cell, Backtracked Optimal Path).
 3. **Decision Tree Visualizer:** Graphical branch diagram demonstrating the choice between Include and Exclude options.
-4. **Disaster Scenarios:** Preset configurations for Flood 🌊, Earthquake 🌎, Wildfire 🔥, and Cyclone 🌪.
+4. **Disaster Scenarios:** Preset configurations for Flood, Earthquake, Wildfire, and Cyclone.
 5. **Resource Priority Modes:** Dynamic utility weighting for Balanced, Life-Critical, Basic Survival, and Medical Focus.
 6. **Relief Truck Visualization:** Graphical truck bay displaying loaded items, current load meter, and remaining capacity.
 7. **What-If Analysis:** Side-by-side comparative simulation for capacity and priority adjustments.
@@ -173,7 +173,7 @@ src/
 
 ---
 
-## 🧪 12. How to Run Locally
+## 12. How to Run Locally
 
 ### Prerequisites
 - Node.js (v18+)
@@ -195,5 +195,5 @@ The application will be available locally at `http://localhost:5173`.
 
 ---
 
-## 🎓 13. Academic Conclusion
+## 13. Academic Conclusion
 The **Disaster Relief Allocator** demonstrates how Dynamic Programming transforms an intractable combinatorial optimization problem ($O(2^n)$ recursion) into an efficient pseudo-polynomial solution ($O(n \times W)$). By visualizing state transitions, recurrence formulas, and backtracking logic in a Disaster Management Command Center context, this model serves as a comprehensive tool for DAA academic evaluation.

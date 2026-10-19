@@ -6,11 +6,11 @@ export function runAllTestCases(): TestCaseResult[] {
 
   // TEST 1: Standard Normal Disaster
   const items1: Resource[] = [
-    { id: 't1-1', name: 'Water', weight: 6, utility: 100, icon: '💧' },
-    { id: 't1-2', name: 'Medicine', weight: 3, utility: 95, icon: '💊' },
-    { id: 't1-3', name: 'Food', weight: 8, utility: 90, icon: '🍱' },
-    { id: 't1-4', name: 'Blanket', weight: 5, utility: 60, icon: '🛏' },
-    { id: 't1-5', name: 'Torch', weight: 2, utility: 30, icon: '🔦' }
+    { id: 't1-1', name: 'Water', weight: 6, utility: 100, icon: 'water' },
+    { id: 't1-2', name: 'Medicine', weight: 3, utility: 95, icon: 'medicine' },
+    { id: 't1-3', name: 'Food', weight: 8, utility: 90, icon: 'food' },
+    { id: 't1-4', name: 'Blanket', weight: 5, utility: 60, icon: 'shelter' },
+    { id: 't1-5', name: 'Torch', weight: 2, utility: 30, icon: 'light' }
   ];
   const cap1 = 20;
   const res1 = solve01Knapsack(items1, cap1);
@@ -44,8 +44,8 @@ export function runAllTestCases(): TestCaseResult[] {
 
   // TEST 3: Capacity Smaller Than Every Item
   const items3: Resource[] = [
-    { id: 't3-1', name: 'Heavy Generator', weight: 25, utility: 200, icon: '⚡' },
-    { id: 't3-2', name: 'Large Tent', weight: 30, utility: 180, icon: '🎪' }
+    { id: 't3-1', name: 'Heavy Generator', weight: 25, utility: 200, icon: 'power' },
+    { id: 't3-2', name: 'Large Tent', weight: 30, utility: 180, icon: 'tent' }
   ];
   const cap3 = 20;
   const res3 = solve01Knapsack(items3, cap3);
@@ -64,7 +64,7 @@ export function runAllTestCases(): TestCaseResult[] {
 
   // TEST 4: Single Item (Fits)
   const items4: Resource[] = [
-    { id: 't4-1', name: 'Medical Kit', weight: 5, utility: 100, icon: '💊' }
+    { id: 't4-1', name: 'Medical Kit', weight: 5, utility: 100, icon: 'medicine' }
   ];
   const cap4 = 10;
   const res4 = solve01Knapsack(items4, cap4);
@@ -83,8 +83,8 @@ export function runAllTestCases(): TestCaseResult[] {
 
   // TEST 5: Duplicate Utilities (Same Utility, Different Weights)
   const items5: Resource[] = [
-    { id: 't5-1', name: 'Heavy Blanket', weight: 10, utility: 80, icon: '🛏' },
-    { id: 't5-2', name: 'Light Blanket', weight: 4, utility: 80, icon: '🛏' }
+    { id: 't5-1', name: 'Heavy Blanket', weight: 10, utility: 80, icon: 'shelter' },
+    { id: 't5-2', name: 'Light Blanket', weight: 4, utility: 80, icon: 'shelter' }
   ];
   const cap5 = 10;
   const res5 = solve01Knapsack(items5, cap5);

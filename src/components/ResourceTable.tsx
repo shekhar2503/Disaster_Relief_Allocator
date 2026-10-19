@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { Resource } from '../types';
 import { ResourceForm } from './ResourceForm';
 import { Plus, Edit2, Trash2, RotateCcw, PackageCheck } from 'lucide-react';
+import { ResourceIcon } from './ResourceIcon';
 
 interface ResourceTableProps {
   resources: Resource[];
@@ -103,7 +104,7 @@ export const ResourceTable: React.FC<ResourceTableProps> = ({
                       }`}
                     >
                       <td className="py-2 px-3 font-sans font-medium text-slate-800 dark:text-slate-200 flex items-center gap-2">
-                        <span className="text-sm">{item.icon}</span>
+                        <ResourceIcon icon={item.icon} name={item.name} className="w-4 h-4 flex-shrink-0" />
                         <span>{item.name}</span>
                       </td>
                       <td className="py-2 px-3 text-center text-slate-700 dark:text-slate-300 font-mono">

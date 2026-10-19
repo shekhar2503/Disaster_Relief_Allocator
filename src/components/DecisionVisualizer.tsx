@@ -1,6 +1,7 @@
 import React from 'react';
 import type { DPStep } from '../types';
 import { GitFork, Check, X } from 'lucide-react';
+import { ResourceIcon } from './ResourceIcon';
 
 interface DecisionVisualizerProps {
   currentStep: DPStep | null;
@@ -36,8 +37,8 @@ export const DecisionVisualizer: React.FC<DecisionVisualizerProps> = ({ currentS
 
       <div className="flex flex-col items-center py-1">
         <div className="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-center mb-2 shadow-2xs">
-          <span className="text-xs font-semibold text-slate-900 dark:text-white flex items-center gap-1 justify-center">
-            <span>{item.icon}</span>
+          <span className="text-xs font-semibold text-slate-900 dark:text-white flex items-center gap-1.5 justify-center">
+            <ResourceIcon icon={item.icon} name={item.name} className="w-4 h-4 flex-shrink-0" />
             <span>{item.name}</span>
           </span>
           <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 block">

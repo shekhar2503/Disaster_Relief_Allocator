@@ -79,7 +79,7 @@ export const WhatIfAnalysis: React.FC<WhatIfAnalysisProps> = ({
             <option value="">-- Select Item to Boost --</option>
             {currentItems.map((item, idx) => (
               <option key={item.id} value={idx}>
-                {item.icon} {item.name} (+20 pts priority)
+                {item.name} (+20 pts priority)
               </option>
             ))}
           </select>

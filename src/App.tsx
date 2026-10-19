@@ -369,7 +369,7 @@ export function App() {
 
       {/* Academic Footer */}
       <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-4 px-4 text-center text-xs text-slate-500 dark:text-slate-400 font-mono transition-colors">
-        <p>🚚 Disaster Relief Allocator — FA2 Project for Design and Analysis of Algorithms (DAA)</p>
+        <p>Disaster Relief Allocator &mdash; FA2 Project for Design and Analysis of Algorithms (DAA)</p>
       </footer>
     </div>
   );

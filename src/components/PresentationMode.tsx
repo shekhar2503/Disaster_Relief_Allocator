@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import type { DisasterScenario, Resource, KnapsackResult } from '../types';
 import { Award, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ScenarioIcon } from './ScenarioIcon';
+import { ResourceIcon } from './ResourceIcon';
 
 interface PresentationModeProps {
   scenario: DisasterScenario;
@@ -26,7 +28,7 @@ export const PresentationMode: React.FC<PresentationModeProps> = ({
       content: (
         <div className="space-y-4 text-slate-700 dark:text-slate-300 text-sm">
           <p>
-            Following a disaster (<strong className="text-blue-700 dark:text-blue-300">{scenario.name} {scenario.icon}</strong>), emergency response teams face strict vehicle weight limits.
+            Following a disaster (<strong className="text-blue-700 dark:text-blue-300 inline-flex items-center gap-1 font-semibold"><ScenarioIcon scenarioId={scenario.id} className="w-4 h-4" />{scenario.name}</strong>), emergency response teams face strict vehicle weight limits.
           </p>
           <div className="grid grid-cols-2 gap-4 bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 font-mono text-xs">
             <div>Truck Capacity Limit (W): <strong className="text-blue-700 dark:text-blue-400">{capacity} kg</strong></div>
@@ -93,7 +95,7 @@ export const PresentationMode: React.FC<PresentationModeProps> = ({
             <div className="flex flex-wrap gap-2">
               {result.selectedItems.map((item) => (
                 <span key={item.id} className="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-900 dark:text-emerald-300 text-xs font-medium flex items-center gap-1.5">
-                  <span>{item.icon}</span>
+                  <ResourceIcon icon={item.icon} name={item.name} className="w-3.5 h-3.5 flex-shrink-0" />
                   <span>{item.name}</span>
                   <span className="font-mono text-emerald-700 dark:text-emerald-400 font-bold">({item.weight}kg, {item.utility}pts)</span>
                 </span>

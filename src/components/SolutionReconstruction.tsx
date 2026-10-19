@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ReconstructionStep, Resource } from '../types';
 import { Network, CheckCircle2, XCircle } from 'lucide-react';
+import { ResourceIcon } from './ResourceIcon';
 
 interface SolutionReconstructionProps {
   reconstructionSteps: ReconstructionStep[];
@@ -55,13 +56,14 @@ export const SolutionReconstruction: React.FC<SolutionReconstructionProps> = ({
                 }`}
               >
                 <div className="flex items-center justify-between font-semibold mb-0.5">
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center gap-1.5">
                     {step.included ? (
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                     ) : (
                       <XCircle className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
                     )}
-                    <span>{step.item.icon} {step.item.name}</span>
+                    <ResourceIcon icon={step.item.icon} name={step.item.name} className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>{step.item.name}</span>
                   </span>
                   <span className={step.included ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-400 dark:text-slate-500'}>
                     {step.included ? 'INCLUDED' : 'EXCLUDED'}
@@ -85,7 +87,8 @@ export const SolutionReconstruction: React.FC<SolutionReconstructionProps> = ({
                 <div key={item.id} className="flex items-center justify-between p-1.5 rounded bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 text-emerald-950 dark:text-emerald-300">
                   <span className="flex items-center gap-1.5 font-sans font-medium">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
-                    <span>{item.icon} {item.name}</span>
+                    <ResourceIcon icon={item.icon} name={item.name} className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>{item.name}</span>
                   </span>
                   <span className="text-[11px] font-semibold">{item.weight}kg | {item.utility}pts</span>
                 </div>
@@ -95,7 +98,8 @@ export const SolutionReconstruction: React.FC<SolutionReconstructionProps> = ({
                 <div key={item.id} className="flex items-center justify-between p-1.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-500">
                   <span className="flex items-center gap-1.5 font-sans">
                     <XCircle className="w-3.5 h-3.5 text-slate-300 dark:text-slate-600 flex-shrink-0" />
-                    <span>{item.icon} {item.name}</span>
+                    <ResourceIcon icon={item.icon} name={item.name} className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>{item.name}</span>
                   </span>
                   <span className="text-[11px] text-slate-400 dark:text-slate-500">{item.weight}kg | {item.utility}pts</span>
                 </div>

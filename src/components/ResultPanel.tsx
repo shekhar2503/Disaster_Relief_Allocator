@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Resource } from '../types';
 import { Trophy, Scale, ShieldCheck, Zap } from 'lucide-react';
+import { ResourceIcon } from './ResourceIcon';
 
 interface ResultPanelProps {
   selectedItems: Resource[];
@@ -54,7 +55,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({
                 key={item.id}
                 className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-900 dark:text-emerald-300 text-xs font-medium"
               >
-                <span>{item.icon}</span>
+                <ResourceIcon icon={item.icon} name={item.name} className="w-3.5 h-3.5 flex-shrink-0" />
                 <span>{item.name}</span>
                 <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold">({item.weight}kg)</span>
               </span>

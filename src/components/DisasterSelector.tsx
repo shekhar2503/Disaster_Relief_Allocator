@@ -1,6 +1,7 @@
 import React from 'react';
 import type { DisasterScenario, ScenarioId } from '../types';
 import { Compass } from 'lucide-react';
+import { ScenarioIcon } from './ScenarioIcon';
 
 interface DisasterSelectorProps {
   scenarios: DisasterScenario[];
@@ -39,7 +40,9 @@ export const DisasterSelector: React.FC<DisasterSelectorProps> = ({
               {isActive && (
                 <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-blue-600 dark:bg-blue-500 rounded-bl-sm"></div>
               )}
-              <div className="text-xl mb-1">{scenario.icon}</div>
+              <div className="mb-1.5 p-2 rounded-lg bg-slate-100 dark:bg-slate-800/80 transition-colors">
+                <ScenarioIcon scenarioId={scenario.id} className="w-5 h-5" />
+              </div>
               <div className="text-xs font-semibold text-center">{scenario.name}</div>
               <div className="text-[10px] text-slate-400 dark:text-slate-500 text-center font-mono mt-0.5">
                 Cap: {scenario.defaultCapacity} kg

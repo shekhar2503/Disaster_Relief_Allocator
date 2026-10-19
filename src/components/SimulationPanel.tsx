@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import type { DisasterScenario, Resource, KnapsackResult } from '../types';
 import confetti from 'canvas-confetti';
-import { Sparkles, ArrowRight, X } from 'lucide-react';
+import {
+  Sparkles,
+  ArrowRight,
+  X,
+  AlertTriangle,
+  Boxes,
+  Truck,
+  Scale,
+  Cpu,
+  Table,
+  CheckCircle2,
+  Navigation,
+} from 'lucide-react';
+import { ScenarioIcon } from './ScenarioIcon';
 
 interface SimulationPanelProps {
   isOpen: boolean;
@@ -13,14 +26,62 @@ interface SimulationPanelProps {
 }
 
 const SIMULATION_STEPS = [
-  { id: 1, title: 'DISASTER DETECTED', icon: '🚨', desc: 'Emergency command center receives alert notification.' },
-  { id: 2, title: 'RELIEF RESOURCES IDENTIFIED', icon: '📦', desc: 'Available emergency supplies cataloged and weighed.' },
-  { id: 3, title: 'TRUCK CAPACITY SET', icon: '🚚', desc: 'Relief transport truck weight limit established.' },
-  { id: 4, title: 'PRIORITIES ANALYZED', icon: '⚖️', desc: 'Utility and emergency priority coefficients weighted.' },
-  { id: 5, title: 'DYNAMIC PROGRAMMING STARTED', icon: '💻', desc: 'Bottom-Up 0/1 Knapsack matrix computation initialized.' },
-  { id: 6, title: 'DP TABLE GENERATED', icon: '📊', desc: 'All subproblem optimal values computed in O(n×W).' },
-  { id: 7, title: 'OPTIMAL RESOURCES SELECTED', icon: '🎯', desc: 'Solution reconstructed via backtracking path.' },
-  { id: 8, title: 'TRUCK DISPATCH READY', icon: '🚚💨', desc: 'Relief payload verified and authorized for immediate dispatch!' },
+  {
+    id: 1,
+    title: 'DISASTER DETECTED',
+    icon: AlertTriangle,
+    iconColor: 'text-rose-500',
+    desc: 'Emergency command center receives alert notification.',
+  },
+  {
+    id: 2,
+    title: 'RELIEF RESOURCES IDENTIFIED',
+    icon: Boxes,
+    iconColor: 'text-blue-500',
+    desc: 'Available emergency supplies cataloged and weighed.',
+  },
+  {
+    id: 3,
+    title: 'TRUCK CAPACITY SET',
+    icon: Truck,
+    iconColor: 'text-amber-500',
+    desc: 'Relief transport truck weight limit established.',
+  },
+  {
+    id: 4,
+    title: 'PRIORITIES ANALYZED',
+    icon: Scale,
+    iconColor: 'text-purple-500',
+    desc: 'Utility and emergency priority coefficients weighted.',
+  },
+  {
+    id: 5,
+    title: 'DYNAMIC PROGRAMMING STARTED',
+    icon: Cpu,
+    iconColor: 'text-indigo-500',
+    desc: 'Bottom-Up 0/1 Knapsack matrix computation initialized.',
+  },
+  {
+    id: 6,
+    title: 'DP TABLE GENERATED',
+    icon: Table,
+    iconColor: 'text-sky-500',
+    desc: 'All subproblem optimal values computed in O(n×W).',
+  },
+  {
+    id: 7,
+    title: 'OPTIMAL RESOURCES SELECTED',
+    icon: CheckCircle2,
+    iconColor: 'text-emerald-500',
+    desc: 'Solution reconstructed via backtracking path.',
+  },
+  {
+    id: 8,
+    title: 'TRUCK DISPATCH READY',
+    icon: Navigation,
+    iconColor: 'text-emerald-600',
+    desc: 'Relief payload verified and authorized for immediate dispatch!',
+  },
 ];
 
 export const SimulationPanel: React.FC<SimulationPanelProps> = ({
@@ -58,6 +119,7 @@ export const SimulationPanel: React.FC<SimulationPanelProps> = ({
   if (!isOpen) return null;
 
   const stepInfo = SIMULATION_STEPS[currentSimStep - 1];
+  const StepIcon = stepInfo.icon;
 
   return (
     <div className="fixed inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-xs z-50 flex items-center justify-center p-4">
@@ -77,8 +139,12 @@ export const SimulationPanel: React.FC<SimulationPanelProps> = ({
             <h2 className="text-base font-extrabold tracking-tight uppercase text-slate-900 dark:text-white">
               Command Center Disaster Simulator
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Scenario: <strong className="text-blue-700 dark:text-blue-300">{scenario.name} ({scenario.icon})</strong>
+            <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 mt-0.5">
+              <span>Scenario:</span>
+              <strong className="text-blue-700 dark:text-blue-300 inline-flex items-center gap-1 font-semibold">
+                <ScenarioIcon scenarioId={scenario.id} className="w-3.5 h-3.5" />
+                <span>{scenario.name}</span>
+              </strong>
             </p>
           </div>
         </div>
@@ -99,7 +165,9 @@ export const SimulationPanel: React.FC<SimulationPanelProps> = ({
         </div>
 
         <div className="bg-slate-50 dark:bg-slate-950 p-6 rounded-xl border border-slate-200 dark:border-slate-800 text-center relative overflow-hidden mb-5">
-          <div className="text-5xl mb-3">{stepInfo.icon}</div>
+          <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center mx-auto mb-3 shadow-xs">
+            <StepIcon className={`w-7 h-7 ${stepInfo.iconColor}`} />
+          </div>
           <div className="text-xs font-mono font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-1">
             STEP {stepInfo.id} OF 8
           </div>
